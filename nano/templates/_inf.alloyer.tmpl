@@ -1,0 +1,76 @@
+{{:helper.EmptyMode()}}
+<style>
+	* {opacity: 0.9;}
+	body{ {{:data.ui_bg}}; }
+	.block{
+		display: block;
+
+		padding: 10px;
+		margin: 10px;
+
+		width: 20%;
+
+		border: 2px solid #125;
+		border-radius: 8px;
+
+		outline: 2px solid #125;
+		outline-offset: -7px;
+
+		white-space: pre-line;
+		text-align: center;
+	}
+	.small_size{
+		width: 10%;
+	}
+	.omegamat_link{
+		color: #aaf;
+		background: #2d91a6;
+		transition: background 0.3s ease-in-out;
+	}
+	.omegamat_link:hover{background: #2da196;}
+	.code_error_msg{
+		display: inline-block;
+		color: #0f0;
+		background: #a00;
+
+		padding: 20px;
+		border: solid #f00 1px;
+		width: 25%;
+		height: 25%;
+		text-align: center;
+		position: absolute;
+		top: 25%;
+		left: 30%;
+	}
+</style>
+<!--
+	{{:helper.link("", null, {'' : 1},null,"technological_block omegamat_link")}}
+	{{:helper.link('Win', null, {"window" : "Win_name"},null, "omegamat_link technological_block")}}
+-->
+
+{{if data.ui_window == "main_menu"}}
+	{{:helper.link('First Metal', null, {"window" : "first_metal"},null, "omegamat_link block")}}
+	<table>
+		<tr>
+			<td>{{:helper.link('First Metal', null, {"window" : "first_metal"},null, "omegamat_link block")}}
+			<td>{{:helper.link('Second Metal', null, {"window" : "second_metal"},null, "omegamat_link block")}}
+		<tr>
+			<td>{{:helper.link('First Metal', null, {"window" : "alloing_schemes"},null, "omegamat_link block")}}
+			<td>{{:helper.link('Second Metal', null, {"window" : "approximate_result"},null, "omegamat_link block")}}
+	</table>
+	{{:helper.link('Additives', null, {"window" : "additives"},null, "omegamat_link block small_size")}}
+{{/if}}
+
+{{else data.ui_window == "first_metal"}}
+first_metal
+{{else data.ui_window == "second_metal"}}
+second_metal
+{{else data.ui_window == "alloing_schemes"}}
+alloing_schemes
+{{else data.ui_window == "additives"}}
+additives
+{{else data.ui_window == "approximate_result"}}
+approximate_result
+{{else}}
+		<div class="code_error_msg block">TEMPLATE ERROR</div>
+{{/if}}

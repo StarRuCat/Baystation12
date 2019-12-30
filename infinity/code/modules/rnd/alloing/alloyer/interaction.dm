@@ -1,0 +1,7 @@
+/obj/machinery/alloyer/physical_attack_hand(mob/user)
+	. = ..()
+	if(Adjacent(user))
+		if(anchored && !panel_open) ui_interact(user)
+		else if(panel_open) to_chat(user, SPAN_WARNING("\icon[src]\the [src] need to close it's panel."))
+		else to_chat(user, SPAN_WARNING("\icon[src]\the [src] must be secured to floor."))
+	update_icon()
