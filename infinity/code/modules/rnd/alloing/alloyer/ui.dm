@@ -1,7 +1,17 @@
+/obj/machinery/alloyer
+	var/template = "_inf.alloyer.tmpl"
+	var/template_title = "Omega Materials Atomic Alloyer"
+
+	var/ui_window = "main_menu"
+	var/ui_bg = "background-color: #1d3126; background-image: url(inf_uiBasicBackground-OmegaMat.png) repeat-x"
+
+/obj/machinery/alloyer/nt
+	ui_bg = ""
+
 /obj/machinery/alloyer/proc/get_ui_data()
 	. = list()
 	.["ui_window"]	=	ui_window
-	.["bg"]		=	ui_bg
+	.["ui_bg"]		=	ui_bg
 
 /obj/machinery/alloyer/ui_interact(mob/user, ui_key = "main", datum/nanoui/ui = null, force_open = 1, var/master_ui = null, var/datum/topic_state/state = GLOB.default_state)
 	var/data = list()

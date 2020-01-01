@@ -1,4 +1,3 @@
-{{:helper.EmptyMode()}}
 <style>
 	* {opacity: 0.9;}
 	body{ {{:data.ui_bg}}; }
@@ -42,35 +41,34 @@
 		top: 25%;
 		left: 30%;
 	}
+	#uiTitleFluff{
+		background: none;
+	}
 </style>
-<!--
-	{{:helper.link("", null, {'' : 1},null,"technological_block omegamat_link")}}
-	{{:helper.link('Win', null, {"window" : "Win_name"},null, "omegamat_link technological_block")}}
--->
 
 {{if data.ui_window == "main_menu"}}
 	{{:helper.link('First Metal', null, {"window" : "first_metal"},null, "omegamat_link block")}}
 	<table>
 		<tr>
-			<td>{{:helper.link('First Metal', null, {"window" : "first_metal"},null, "omegamat_link block")}}
-			<td>{{:helper.link('Second Metal', null, {"window" : "second_metal"},null, "omegamat_link block")}}
+			<td>{{:helper.link('First Metal', null, {"window" : "first_metal"}, null, "omegamat_link block")}}
+			<td>{{:helper.link('Second Metal', null, {"window" : "second_metal"}, null, "omegamat_link block")}}
 		<tr>
-			<td>{{:helper.link('First Metal', null, {"window" : "alloing_schemes"},null, "omegamat_link block")}}
-			<td>{{:helper.link('Second Metal', null, {"window" : "approximate_result"},null, "omegamat_link block")}}
+			<td>{{:helper.link('First Metal', null, {"window" : "alloing_schemes"}, null, "omegamat_link block")}}
+			<td>{{:helper.link('Second Metal', null, {"window" : "approximate_result"}, null, "omegamat_link block")}}
 	</table>
-	{{:helper.link('Additives', null, {"window" : "additives"},null, "omegamat_link block small_size")}}
+	{{:helper.link('Additives', null, {"window" : "additives"}, null, "omegamat_link block small_size")}}
 {{/if}}
 
 {{else data.ui_window == "first_metal"}}
-first_metal
+	first_metal
 {{else data.ui_window == "second_metal"}}
-second_metal
+	second_metal
 {{else data.ui_window == "alloing_schemes"}}
-alloing_schemes
+	alloing_schemes
 {{else data.ui_window == "additives"}}
-additives
+	additives
 {{else data.ui_window == "approximate_result"}}
-approximate_result
+	approximate_result
 {{else}}
-		<div class="code_error_msg block">TEMPLATE ERROR</div>
+	<div class="code_error_msg block">TEMPLATE ERROR</div>
 {{/if}}

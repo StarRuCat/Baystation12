@@ -19,15 +19,6 @@
 	var/loading_materials_in_progress = 0
 	var/on = 1
 
-	var/template = "_inf.alloyer.tmpl"
-	var/template_title = "Omega Materials Atomic Alloyer"
-
-	var/ui_window = "main_menu"
-	var/ui_bg = "background-color: #1d3126; background-image: url(inf_uiBasicBackground-OmegaMat.png) repeat-x"
-
-/obj/machinery/alloyer/nt
-	ui_bg = ""
-
 /obj/machinery/alloyer/Initialize()
 	. = ..()
 	if(!base_icon_state) base_icon_state = icon_state
