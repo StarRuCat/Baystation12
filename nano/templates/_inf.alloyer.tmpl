@@ -1,6 +1,11 @@
 {{:helper.OMEGAMode()}}
 <style>
-	* {opacity: 0.99;}
+
+	*{
+		--box-shadow-color: #006;
+		--transition-speed: 0.3s;
+		opacity: 0.95;
+	}
 	.block{
 		display: block;
 
@@ -15,19 +20,22 @@
 		white-space: pre-line;
 		text-align: center;
 	}
-	.small_size{
+	.small_size{ 
 		width: 10%;
 	}
-	.omegamat_link{
+	.omegamat{
+		box-shadow: inset 0 0 5px 1px var(--box-shadow-color);
 		color: #aaf;
-		background: #2d91a6;
-		transition: background 0.3s ease-in-out;
+		background: #2d66a6;
+		transition: background var(--transition-speed) ease-in-out;
 	}
-	.omegamat_link:hover{background: #2da196;}
-	.code_error_msg{
-		display: inline-block;
-		color: #0f0;
+	.omegamat:hover{background: #3d76c6;--box-shadow-color: #009;}
+	.emergency{
 		background: #a00;
+		color: #0f0;
+	}
+	.code_error_msg{
+		display: inline-block;	
 
 		padding: 20px;
 		border: solid #f00 1px;
@@ -38,37 +46,43 @@
 		top: 25%;
 		left: 30%;
 	}
-	.clear{
+	.center{
+		margin: 10px auto;
 		clear: both;
 	}
-	.clearleft{
-		clear: left;
-	}
-	.clearright{
+	.right{
+		margin: 10px 0 0 auto;
+		float: right;
 		clear: right;
 	}
 
-	.center {
-		margin: 0 auto;
-	}
-
-	.right {
-		margin: 0 0 0 auto;
-		float: right;
-	}
-
-	.left {
-		margin: auto 0 0 0;
+	.left{
+		margin: 10px 0;
 		float: left;
+		clear: left;
+	}
+	.blc{
+		white-space: pre-line;
+		display: block;
+		border-radius: 8px;
+		padding: 5px 10px;
 	}
 </style>
+{{if data.ui_window != "reboot"}}
+	{{if data.ui_window != "main_menu"}}
+		{{:helper.link("Back", null, {"window" : "main_menu"}, null, "left")}}
+	{{/if}}
+	{{:helper.link("EMERGENCY SHUTDOWN", null, {"emergency_shutdown" : 1}, null, "right emergency")}}
+{{/if}}
+<br><br>
+
 
 {{if data.ui_window == "main_menu"}}
-	{{:helper.link(data.ui_win_data.first_metal, null, {"window" : "first_metal"}, null, "omegamat_link block left clearleft")}}
-	{{:helper.link(data.ui_win_data.first_metal, null, {"window" : "second_metal"}, null, "omegamat_link block right clearright")}}<br><br><br>
-	{{:helper.link('alloing_schemesl', null, {"window" : "alloing_schemes"}, null, "omegamat_link block left clearleft")}}
-	{{:helper.link('approximate_result', null, {"window" : "approximate_result"}, null, "omegamat_link block right clearright")}}<br><br><br>
-	{{:helper.link('Additives', null, {"window" : "additives"}, null, "omegamat_link block small_size center clear")}}
+	<div class="omegamat block left"><h3>Material</h3><hr>{{:data.ui_win_data.first_metal}}{{:helper.link("View Info", null, {"window" : "first_metal"})}}</div>
+	<div class="omegamat block right"><h3>Material</h3><hr>{{:data.ui_win_data.second_metal}}{{:helper.link("View Info", null, {"window" : "second_metal"})}}</div><br><br><br>
+	<div class="omegamat block left"><h3>Alloing Shemes</h3><hr>{{:helper.link('View', null, {"window" : "alloing_schemes"})}}</div>
+	<div class="omegamat block right"><h3>Additives</h3><hr>{{:data.ui_win_data.additives}}{{:helper.link('View', null, {"window" : "additives"})}}</div><hr>
+	{{:helper.link('Alloy', null, {"window" : "approximate_result"})}}
 
 {{else data.ui_window == "first_metal"}}
 	first_metal
@@ -85,6 +99,8 @@
 {{else data.ui_window == "approximate_result"}}
 	approximate_result
 
+{{else data.ui_window == "reboot"}}
+	{{:helper.link("REBOT", null, {"bootmeup" : 1}, null, "left")}} <!-- wake me up inside -->
 {{else}}
-	<div class="code_error_msg block">TEMPLATE ERROR</div>
+	<div class="code_error_msg block emergency">TEMPLATE ERROR</div>
 {{/if}}

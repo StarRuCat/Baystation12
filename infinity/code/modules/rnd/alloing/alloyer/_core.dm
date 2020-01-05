@@ -2,7 +2,7 @@
 	name = "atomic furnace"
 	desc = "This is an atomic furnace.<br>It deconstruct materials and merge them, creating alloy."
 
-	icon = 'infinity/icons/obj/rnd/alloing/alloyer.dmi'
+	icon = 'infinity/icons/obj/rnd/alloing/new.alloyer.dmi'
 	icon_state = "alloyer"
 	var/base_icon_state
 
@@ -10,8 +10,8 @@
 	anchored = 1
 
 
-	var/list/metals[2] //metals to alloy
-	var/list/additives = list() //like carbon in steel
+	var/list/materials = list() //materials to alloy
+	var/obj/item/weapon/reagent_containers/glass/beaker/additives //like carbon in steel
 	var/material/result_alloy = null
 	var/alloy_temperature = 293
 

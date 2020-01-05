@@ -3,7 +3,7 @@
 	LAZY_LIST_CLEAR(overlays)
 	if(!(stat & (NOPOWER|BROKEN)) && on && !panel_open)
 		overlays += image(icon, "[base_icon_state]_on")
-	if(alloing_in_progress && result_alloy && on && !loading_materials_in_progress)
+	if(alloing_in_progress && on && !loading_materials_in_progress)
 		/*
 		var/image/alloy = image(icon, "alloyer_material_overlay", layer+0.2)
 		alloy.color = result_alloy.icon_colour
@@ -18,11 +18,11 @@
 			qdel(ray)
 		*/
 		flick("[base_icon_state]_processing", src)
-		MCR_SPAWN(34)
+		MCR_SPAWN(39)
 			alloing_in_progress = 0
-	if(loading_materials_in_progress) 
+	if(loading_materials_in_progress)
 		flick("[base_icon_state]_mat_animation", src)
-		MCR_SPAWN(7)
+		MCR_SPAWN(33)
 			loading_materials_in_progress = 0
 	if(panel_open)
 		flick("[base_icon_state]_panel_animation", src)

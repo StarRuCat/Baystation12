@@ -5,3 +5,11 @@
 		else if(panel_open) to_chat(user, SPAN_WARNING("\icon[src]\the [src] need to close it's panel."))
 		else to_chat(user, SPAN_WARNING("\icon[src]\the [src] must be secured to floor."))
 	update_icon()
+
+/obj/machinery/alloyer/attackby(obj/item/I, mob/user)
+	. = ..()
+	if(istype(I, /obj/item/weapon/reagent_containers/glass/beaker))
+		additives = I
+		I.forceMove(src)
+	if(istype(I, /obj/item/stack/material))
+		if(materials.len < 2) materials.Add(I)
