@@ -78,17 +78,17 @@
 
 
 {{if data.ui_window == "main_menu"}}
-	<div class="omegamat block left"><h3>Material</h3><hr>{{:data.ui_win_data.first_metal}}{{:helper.link("View Info", null, {"window" : "first_metal"})}}</div>
-	<div class="omegamat block right"><h3>Material</h3><hr>{{:data.ui_win_data.second_metal}}{{:helper.link("View Info", null, {"window" : "second_metal"})}}</div><br><br><br>
+	<div class="omegamat block left"><h3>Material</h3><hr>{{:data.ui_win_preview.first_metal}}{{:helper.link("View Info", null, {"window" : "first_metal"})}}</div>
+	<div class="omegamat block right"><h3>Material</h3><hr>{{:data.ui_win_preview.second_metal}}{{:helper.link("View Info", null, {"window" : "second_metal"})}}</div><br><br><br>
 	<div class="omegamat block left"><h3>Alloing Shemes</h3><hr>{{:helper.link('View', null, {"window" : "alloing_schemes"})}}</div>
 	<div class="omegamat block right"><h3>Additives</h3><hr>{{:data.ui_win_data.additives}}{{:helper.link('View', null, {"window" : "additives"})}}</div><hr>
 	{{:helper.link('Alloy', null, {"window" : "approximate_result"})}}
 
 {{else data.ui_window == "first_metal"}}
-	first_metal
+	{{:data.ui_win_data.first_metal}}
 
 {{else data.ui_window == "second_metal"}}
-	second_metal
+	{{:data.ui_win_data.second_metal}}
 
 {{else data.ui_window == "alloing_schemes"}}
 	alloing_schemes
