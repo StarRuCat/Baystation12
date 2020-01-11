@@ -8,8 +8,5 @@
 
 /obj/machinery/alloyer/attackby(obj/item/I, mob/user)
 	. = ..()
-	if(istype(I, /obj/item/weapon/reagent_containers/glass/beaker))
-		additives = I
-		I.forceMove(src)
 	if(istype(I, /obj/item/stack/material))
-		if(materials.len < 2) materials.Add(I)
+		if(materials2alloy.len < 2) materials2alloy.Add(I)

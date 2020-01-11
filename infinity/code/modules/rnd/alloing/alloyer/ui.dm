@@ -7,11 +7,11 @@
 	var/list/ui_win_preview = list()
 
 /obj/machinery/alloyer/proc/generate_win_data()
-	if(materials.len)
+	if(materials2alloy.len)
 		var/obj/item/stack/material/material1
 		var/obj/item/stack/material/material2
-		materials[1] ? (material1 = materials[1]) : null
-		(materials.len >= 2 && materials[2]) ? (material2 = materials[2]) : null
+		materials2alloy[1] ? (material1 = materials2alloy[1]) : null
+		(materials2alloy.len >= 2 && materials2alloy[2]) ? (material2 = materials2alloy[2]) : null
 		if(!material1)
 			ui_win_data["first_metal"] = "No material found"
 		else
@@ -19,31 +19,21 @@
 		if(!material2)
 			ui_win_data["second_metal"] = "No material found"
 		else
-			ui_win_data["second_metal"] = ""
-
-	if(!additives)
-		ui_win_data["additives"] = "No beaker inserted"
-	else
-		ui_win_data["additives"] = generate_additives_data(additives)
+			ui_win_data["second_metal"] = generate_material_data(material2)
 
 /obj/machinery/alloyer/proc/generate_win_previews()
-	if(materials.len)
-		if(materials[1])
-			var/obj/item/stack/material/material1 = materials[1]
+	if(materials2alloy.len)
+		if(materials2alloy[1])
+			var/obj/item/stack/material/material1 = materials2alloy[1]
 			ui_win_preview["first_metal"] = generate_material_preview(material1)
-		if(materials.len >= 2 && materials[2])
+		if(materials2alloy.len >= 2 && materials2alloy[2])
 			var/obj/item/stack/material/material2
 			ui_win_preview["second_metal"] = generate_material_preview(material2)
-
-/obj/machinery/alloyer/proc/generate_material_preview(var/obj/item/stack/material/STACK)
-	var/list/dot = list("<img src=\"inf.material.png\" height=200></img>", "name = [STACK.material.name]")
-	dot += STACK.material.lore_text
-	return dot.Join("<br>")
 
 /obj/machinery/alloyer/proc/generate_material_data(var/obj/item/stack/material/STACK)
 	if(STACK.material)
 		var/material/M = STACK.material
-		var/list/mdata = list("<img src=\"inf.material.png\" height=400></img>", "<h1>[M.name]</h1>")
+		var/list/mdata = list("<div align='center' class='omegamat styled-block'><img src=\"inf.material.png\" height=200></img>", "<h1>[M.name]</h1>")
 		if(M.brute_armor)				mdata += "Physical durability: [M.brute_armor]"
 		if(M.burn_armor)				mdata += "Infusibility: [M.brute_armor]"
 		if(M.integrity)					mdata += "Structure durability: [M.integrity]"
@@ -52,12 +42,15 @@
 			var/material/alloy/mm = M
 			mdata += "Difficulty of alloy: [mm.alloy_difficulty_level]"
 
-
+		mdata += "</div>"
 		return mdata.Join("<br>")
 	return "data"
 
-/obj/machinery/alloyer/proc/generate_additives_data(var/obj/item/weapon/reagent_containers/glass/beaker/B)
-	return "data"
+/obj/machinery/alloyer/proc/generate_material_preview(var/obj/item/stack/material/STACK)
+	var/list/dot = list("<center><img src=\"inf.material.png\" height=200></img>", "name = [STACK.material.name]")
+	dot += STACK.material.lore_text
+	dot += "</center>"
+	return dot.Join("<br>")
 
 /obj/machinery/alloyer/proc/get_ui_data()
 	generate_win_data()

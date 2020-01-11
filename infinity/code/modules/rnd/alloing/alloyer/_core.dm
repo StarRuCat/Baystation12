@@ -11,7 +11,6 @@
 
 
 	var/list/materials2alloy = list() //materials to alloy
-	var/obj/item/weapon/reagent_containers/glass/beaker/additives //like carbon in steel
 	var/material/result_alloy = null
 	var/alloy_temperature = 293
 

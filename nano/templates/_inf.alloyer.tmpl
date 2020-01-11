@@ -1,18 +1,15 @@
 {{:helper.OMEGAMode()}}
 <style>
-
 	*{
 		--box-shadow-color: #006;
 		--transition-speed: 0.3s;
 		opacity: 0.95;
 	}
-	.block{
-		display: block;
-
+	.styled-block{
 		padding: 10px;
 		margin: 10px;
 
-		width: 45%;
+		width: 40%;
 
 		border: 2px solid #125;
 		border-radius: 8px;
@@ -30,12 +27,8 @@
 		transition: background var(--transition-speed) ease-in-out;
 	}
 	.omegamat:hover{background: #3d76c6;--box-shadow-color: #009;}
-	.emergency{
-		background: #a00;
-		color: #0f0;
-	}
 	.code_error_msg{
-		display: inline-block;	
+		display: 	
 
 		padding: 20px;
 		border: solid #f00 1px;
@@ -46,43 +39,32 @@
 		top: 25%;
 		left: 30%;
 	}
-	.center{
-		margin: 10px auto;
-		clear: both;
+	table{
+		width: 100%;
 	}
-	.right{
-		margin: 10px 0 0 auto;
-		float: right;
-		clear: right;
-	}
-
-	.left{
-		margin: 10px 0;
-		float: left;
-		clear: left;
-	}
-	.blc{
-		white-space: pre-line;
-		display: block;
-		border-radius: 8px;
-		padding: 5px 10px;
-	}
+	span.redin * {color: #ddd; background: #f00;}
 </style>
 {{if data.ui_window != "reboot"}}
 	{{if data.ui_window != "main_menu"}}
-		{{:helper.link("Back", null, {"window" : "main_menu"}, null, "left")}}
+		<div align="left">{{:helper.link("Back", null, {"window" : "main_menu"})}}</div>
 	{{/if}}
-	{{:helper.link("EMERGENCY SHUTDOWN", null, {"emergency_shutdown" : 1}, null, "right emergency")}}
+	<div align="right"><span class="redin">{{:helper.link("EMERGENCY SHUTDOWN", null, {"emergency_shutdown" : 1})}}</span></div>
 {{/if}}
 <br><br>
-
-
 {{if data.ui_window == "main_menu"}}
-	<div class="omegamat block left"><h3>Material</h3><hr>{{:data.ui_win_preview.first_metal}}{{:helper.link("View Info", null, {"window" : "first_metal"})}}</div>
-	<div class="omegamat block right"><h3>Material</h3><hr>{{:data.ui_win_preview.second_metal}}{{:helper.link("View Info", null, {"window" : "second_metal"})}}</div><br><br><br>
-	<div class="omegamat block left"><h3>Alloing Shemes</h3><hr>{{:helper.link('View', null, {"window" : "alloing_schemes"})}}</div>
-	<div class="omegamat block right"><h3>Additives</h3><hr>{{:data.ui_win_data.additives}}{{:helper.link('View', null, {"window" : "additives"})}}</div><hr>
-	{{:helper.link('Alloy', null, {"window" : "approximate_result"})}}
+	<div align="center">
+		<table>
+			<td class="omegamat styled-block"><h3>Material</h3><hr>{{:data.ui_win_preview.first_metal}}{{:helper.link("View Info", null, {"window" : "first_metal"})}}
+			<td class="omegamat styled-block"><h3>Material</h3><hr>{{:data.ui_win_preview.second_metal}}{{:helper.link("View Info", null, {"window" : "second_metal"})}}
+		</table>
+		<div align="center" width = "80%" class="omegamat styled-block">
+			<h3>
+				Alloing Shemes
+			</h3><hr>
+			{{:helper.link('View', null, {"window" : "alloing_schemes"})}}
+		</div>
+		<div align="center">{{:helper.link('Alloy', null, {"window" : "approximate_result"})}}</div>
+	</div>
 
 {{else data.ui_window == "first_metal"}}
 	{{:data.ui_win_data.first_metal}}
@@ -93,14 +75,13 @@
 {{else data.ui_window == "alloing_schemes"}}
 	alloing_schemes
 
-{{else data.ui_window == "additives"}}
-	additives
-
 {{else data.ui_window == "approximate_result"}}
 	approximate_result
 
 {{else data.ui_window == "reboot"}}
-	{{:helper.link("REBOT", null, {"bootmeup" : 1}, null, "left")}} <!-- wake me up inside -->
+	<div align="center">{{:helper.link("REBOT", null, {"bootmeup" : 1})}}</div>
 {{else}}
-	<div class="code_error_msg block emergency">TEMPLATE ERROR</div>
+	<div align="center" class="code_error_msg styled-block emergency">TEMPLATE ERROR</div>
 {{/if}}
+
+<!-- Short about apearens of align="bleh". CSS block align sucks, i spend too many times to make it, and i preffer simple align="" now -->
