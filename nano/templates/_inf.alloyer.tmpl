@@ -3,7 +3,6 @@
 	*{
 		--box-shadow-color: #006;
 		--transition-speed: 0.3s;
-		opacity: 0.95;
 	}
 	.styled-block{
 		padding: 10px;
@@ -17,7 +16,7 @@
 		white-space: pre-line;
 		text-align: center;
 	}
-	.small_size{ 
+	.small_size{
 		width: 10%;
 	}
 	.omegamat{
@@ -28,7 +27,7 @@
 	}
 	.omegamat:hover{background: #3d76c6;--box-shadow-color: #009;}
 	.code_error_msg{
-		display: 	
+		display: block;
 
 		padding: 20px;
 		border: solid #f00 1px;
@@ -39,8 +38,13 @@
 		top: 25%;
 		left: 30%;
 	}
-	table{
+	table {
 		width: 100%;
+		border-collapse: separate;border-spacing: 10px 0;
+	}
+	table#onerow {
+		width: 40%;
+		border-collapse: separate;border-spacing: 0 10px;
 	}
 	span.redin * {color: #ddd; background: #f00;}
 </style>
@@ -56,14 +60,18 @@
 		<table>
 			<td class="omegamat styled-block"><h3>Material</h3><hr>{{:data.ui_win_preview.first_metal}}{{:helper.link("View Info", null, {"window" : "first_metal"})}}
 			<td class="omegamat styled-block"><h3>Material</h3><hr>{{:data.ui_win_preview.second_metal}}{{:helper.link("View Info", null, {"window" : "second_metal"})}}
+		</table><br>
+		<table id="onerow">
+			<td class="omegamat styled-block">
+				<h3>
+					Alloing Shemes
+				</h3><hr>
+				{{:helper.link('View', null, {"window" : "alloing_schemes"})}}
+			</td><tr>
+			<td class="omegamat styled-block">
+				{{:helper.link('Alloy', null, {"window" : "approximate_result"}, null, "omegamat styled-block")}}
+			</td>
 		</table>
-		<div align="center" width = "80%" class="omegamat styled-block">
-			<h3>
-				Alloing Shemes
-			</h3><hr>
-			{{:helper.link('View', null, {"window" : "alloing_schemes"})}}
-		</div>
-		<div align="center">{{:helper.link('Alloy', null, {"window" : "approximate_result"})}}</div>
 	</div>
 
 {{else data.ui_window == "first_metal"}}
@@ -83,5 +91,3 @@
 {{else}}
 	<div align="center" class="code_error_msg styled-block emergency">TEMPLATE ERROR</div>
 {{/if}}
-
-<!-- Short about apearens of align="bleh". CSS block align sucks, i spend too many times to make it, and i preffer simple align="" now -->
