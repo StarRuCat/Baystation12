@@ -3234,6 +3234,7 @@
 #include "code\unit_tests\~helpers.dm"
 #include "code\unit_tests\~unit_test_types.dm"
 #include "infinity\code\changelog.dm"
+#include "infinity\code\__data_structure\lists\mathrix\list_mathrix.dm"
 #include "infinity\code\__helpers\animations.dm"
 #include "infinity\code\_helpers\game.dm"
 #include "infinity\code\_onclick\hud\global_hud.dm"
