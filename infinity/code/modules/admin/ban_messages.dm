@@ -1,21 +1,21 @@
-/proc/to_world_ban(var/bantype = null, var/setter = "", var/banned = "", var/reason = "", var/duration = null)
+/proc/to_world_ban(var/bantype = null, var/setter = "", var/banned = "", var/reason = "", var/duration = null, var/banned_jobs)
 	if(isnull(bantype)) return
 
 	var/reason_public = reason
 	reason = sql_sanitize_text(reason)
 //	reason = sanitize_a0(reason)
 
+	SSwebhooks.send(WEBHOOK_SEND_BAN, list("bantype" = bantype, "setter" = setter, "banned" = banned, "reason" = reason, "duration" = duration, "banned_jobs" = banned_jobs))
 	switch(bantype)
 		if(BANTYPE_PERMA)
-			to_world(SPAN_NOTICE("<b>BAN: Администратор [setter] БЕССРОЧНО заблокировал(а) игрока [banned]. Причина: \"[reason_public]\"</b>"))
-			send2adminlogirc("BAN: Администратор [setter] БЕССРОЧНО заблокировал(а) игрока [banned]. Причина: \"[reason]\"")
+			to_world(SPAN_NOTICE("<b>BAN: РђРґРјРёРЅРёСЃС‚СЂР°С‚РѕСЂ [setter] [SPAN_DANGER("РїРµСЂРјР°РЅРµРЅС‚РЅРѕ")] Р·Р°Р±Р»РѕРєРёСЂРѕРІР°Р»(Р°) РёРіСЂРѕРєР° [banned]. РџСЂРёС‡РёРЅР°: \"[reason_public]\"</b>"))
+			send2adminlogirc("BAN: РђРґРјРёРЅРёСЃС‚СЂР°С‚РѕСЂ [setter] РїРµСЂРјР°РЅРµРЅС‚РЅРѕ Р·Р°Р±Р»РѕРєРёСЂРѕРІР°Р»(Р°) РёРіСЂРѕРєР° [banned]. РџСЂРёС‡РёРЅР°: \"[reason]\"")
 		if(BANTYPE_TEMP)
-			to_world(SPAN_NOTICE("<b>BAN: Администратор [setter] временно заблокировал(а) игрока [banned]. Причина: \"[reason_public]\"; Срок - [duration] минут.</b>"))
-			send2adminlogirc("BAN: Администратор [setter] временно заблокировал(а) игрока [banned]. Причина: \"[reason]\"; Срок - [duration] минут.")
-/*
+			to_world(SPAN_NOTICE("<b>BAN: РђРґРјРёРЅРёСЃС‚СЂР°С‚РѕСЂ [setter] РІСЂРµРјРµРЅРЅРѕ Р·Р°Р±Р»РѕРєРёСЂРѕРІР°Р»(Р°) РёРіСЂРѕРєР° [banned]. РџСЂРёС‡РёРЅР°: \"[reason_public]\"; РЎСЂРѕРє - [duration] РјРёРЅСѓС‚.</b>"))
+			send2adminlogirc("BAN: РђРґРјРёРЅРёСЃС‚СЂР°С‚РѕСЂ [setter] РІСЂРµРјРµРЅРЅРѕ Р·Р°Р±Р»РѕРєРёСЂРѕРІР°Р»(Р°) РёРіСЂРѕРєР° [banned]. РџСЂРёС‡РёРЅР°: \"[reason]\"; РЎСЂРѕРє - [duration] РјРёРЅСѓС‚.")
 		if(BANTYPE_JOB_PERMA)
-			to_world(SPAN_NOTICE("<b>JOB-BAN: Администратор [setter] перманентно заблокировал(а) роли ([msg]) игроку [banned]. Причина: \"[reason_public]\"</b>"))
-			send2adminlogirc("Администратор [setter] перманентно заблокировал(а) роли ([msg]) игроку [banned]. Причина: \"[reason]\"")
+			to_world(SPAN_NOTICE("<b>JOB-BAN: РђРґРјРёРЅРёСЃС‚СЂР°С‚РѕСЂ [setter] [SPAN_DANGER("РїРµСЂРјР°РЅРµРЅС‚РЅРѕ")] Р·Р°Р±Р»РѕРєРёСЂРѕРІР°Р»(Р°) СЂРѕР»Рё ([banned_jobs]) РёРіСЂРѕРєСѓ [banned]. РџСЂРёС‡РёРЅР°: \"[reason_public]\"</b>"))
+			send2adminlogirc("РђРґРјРёРЅРёСЃС‚СЂР°С‚РѕСЂ [setter] РїРµСЂРјР°РЅРµРЅС‚РЅРѕ Р·Р°Р±Р»РѕРєРёСЂРѕРІР°Р»(Р°) СЂРѕР»Рё ([banned_jobs]) РёРіСЂРѕРєСѓ [banned]. РџСЂРёС‡РёРЅР°: \"[reason]\"")
 		if(BANTYPE_JOB_TEMP)
-			to_world(SPAN_NOTICE("<b>JOB-BAN: Администратор [setter] временно заблокировал(а) роли ([msg]) игроку [banned]. Причина: \"[reason_public]\"; Срок - [duration] минут.</b>"))
-			send2adminlogirc("Администратор [setter] временно заблокировал(а) роли ([msg]) игроку [banned]. Причина: \"[reason]\"; Срок - [duration] минут.")*/
+			to_world(SPAN_NOTICE("<b>JOB-BAN: РђРґРјРёРЅРёСЃС‚СЂР°С‚РѕСЂ [setter] РІСЂРµРјРµРЅРЅРѕ Р·Р°Р±Р»РѕРєРёСЂРѕРІР°Р»(Р°) СЂРѕР»Рё ([banned_jobs]) РёРіСЂРѕРєСѓ [banned]. РџСЂРёС‡РёРЅР°: \"[reason_public]\"; РЎСЂРѕРє - [duration] РјРёРЅСѓС‚.</b>"))
+			send2adminlogirc("РђРґРјРёРЅРёСЃС‚СЂР°С‚РѕСЂ [setter] РІСЂРµРјРµРЅРЅРѕ Р·Р°Р±Р»РѕРєРёСЂРѕРІР°Р»(Р°) СЂРѕР»Рё ([banned_jobs]) РёРіСЂРѕРєСѓ [banned]. РџСЂРёС‡РёРЅР°: \"[reason]\"; РЎСЂРѕРє - [duration] РјРёРЅСѓС‚.")

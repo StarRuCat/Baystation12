@@ -13,6 +13,23 @@ meteor_act
 	if(!has_organ(def_zone))
 		return PROJECTILE_FORCE_MISS //if they don't have the organ in question then the projectile just passes by.
 
+		//IFN
+
+	var/damage_mult = list(
+		BP_HEAD = 1, 
+		BP_CHEST = 1, 
+		BP_GROIN = 0.9, 
+		BP_L_LEG = 0.7, 
+		BP_R_LEG = 0.7, 
+		BP_L_ARM = 0.7, 
+		BP_R_ARM = 0.7, 
+		BP_L_HAND = 0.3, 
+		BP_R_HAND = 0.3,
+		BP_L_FOOT = 0.3,
+		BP_R_FOOT = 0.3)
+
+	P.damage *= damage_mult[def_zone]
+	//INF END
 	//Shields
 	var/shield_check = check_shields(P.damage, P, null, def_zone, "the [P.name]")
 	if(shield_check)
@@ -341,7 +358,7 @@ meteor_act
 			if (!is_robot_module(I))
 				var/sharp = I.can_embed()
 				var/damage = throw_damage //the effective damage used for embedding purposes, no actual damage is dealt here
-				damage *= (1 - get_blocked_ratio(zone, BRUTE, O.damage_flags(), O.armor_penetration, I.force))
+				damage *= (1 - get_blocked_ratio(zone, BRUTE, O.damage_flags(), O.armor_penetration, throw_damage))
 
 				//blunt objects should really not be embedding in things unless a huge amount of force is involved
 				var/embed_chance = sharp? damage/I.w_class : damage/(I.w_class*3)
@@ -364,7 +381,9 @@ meteor_act
 			var/dir = TT.init_dir
 
 			visible_message("<span class='warning'>\The [src] staggers under the impact!</span>","<span class='warning'>You stagger under the impact!</span>")
-			src.throw_at(get_edge_target_turf(src,dir),1,momentum)
+
+			if(!src.isinspace())
+				src.throw_at(get_edge_target_turf(src,dir),1,momentum - THROWNOBJ_KNOCKBACK_SPEED)
 
 			if(!O || !src) return
 

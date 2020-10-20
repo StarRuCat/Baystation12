@@ -21,7 +21,7 @@
 	icon_state = "hair_pais"
 
 /datum/sprite_accessory/hair/infinity/new_ponytail
-	name = "Ponytail 7"
+	name = "Ponytail 7 (alt)"
 	icon_state = "hair_ponytail"
 
 /datum/sprite_accessory/hair/infinity/shortflip
@@ -62,21 +62,31 @@
 	name = "Ponytail 4(TG)"
 	icon_state = "hair_ponytail4"
 
+/datum/sprite_accessory/hair/infinity/ponytail_hayasaka
+	name = "Ponytail Hayasaka"
+	icon_state = "hair_ponytail_hayasaka"
+
 /datum/sprite_accessory/hair/infinity/zone
 	name = "Zone"
 	icon_state = "hair_zone"
-
-/datum/sprite_accessory/hair/infinity/modern
-	name = "Modern"
-	icon_state = "hair_modern"
 
 /datum/sprite_accessory/hair/infinity/long
 	name = "Long hair 4"
 	icon_state = "hair_long"
 
+/datum/sprite_accessory/hair/infinity/elize
+	name = "Elize"
+	icon_state = "hair_elize"
+	gender = FEMALE
+
+/datum/sprite_accessory/hair/infinity/amicia
+	name = "Amicia"
+	icon_state = "hair_amicia"
+	gender = FEMALE
+
 //[MODED_VG]__________________________________________________________
 /datum/sprite_accessory/hair/infinity/bedhead_4
-	name = "Bedhead 4"
+	name = "80s"
 	icon_state = "hair_80s"
 
 /datum/sprite_accessory/hair/infinity/long_bedhead
@@ -140,10 +150,6 @@
 	name = "Terezi"
 	icon_state = "hair_terezi"
 
-/datum/sprite_accessory/hair/infinity/tressshoulder
-	name = "Tress Shoulder"
-	icon_state = "hair_tressshoulder"
-
 /datum/sprite_accessory/hair/infinity/vriska
 	name = "Vriska"
 	icon_state = "hair_vriska"
@@ -185,3 +191,93 @@
 	name = "Country"
 	icon_state = "hair_country"
 //[/MODED_VG]_________________________________________________________
+
+//[AURORA]
+/datum/sprite_accessory/hair/infinity/eighties_ponytail
+	name = "80s Ponytail"
+	icon_state = "hair_80s_ponytail"
+
+/datum/sprite_accessory/hair/infinity/eighties_ponytail/alt
+	name = "80s Ponytail Alt"
+	icon_state = "hair_80s_ponytail_alt"
+
+/datum/sprite_accessory/hair/infinity/big_bow
+	name = "Big Bow"
+	icon_state = "hair_big_bow"
+
+/datum/sprite_accessory/hair/infinity/bun_odango
+	name = "Odango Bun"
+	icon_state = "hair_bun_odango"
+
+/datum/sprite_accessory/hair/infinity/bun_odango2
+	name = "Odango Bun 2"
+	icon_state = "hair_bun_odango2"
+
+/datum/sprite_accessory/hair/infinity/bun_odango3
+	name = "Odango Bun 3"
+	icon_state = "hair_bun_odango3"
+
+/datum/sprite_accessory/hair/infinity/bun_odango4
+	name = "Odango Bun 4"
+	icon_state = "hair_bun_odango4"
+
+/datum/sprite_accessory/hair/infinity/drills_celes
+	name = "Celes"
+	icon_state = "hair_drills_celes"
+
+/datum/sprite_accessory/hair/infinity/pigtails_belle
+	name = "Pigtails Belle"
+	icon_state = "hair_pigtails_belle"
+
+/datum/sprite_accessory/hair/infinity/pigtails_kagami
+	name = "Pigtails Kagami"
+	icon_state = "hair_pigtails_kagami"
+
+/datum/sprite_accessory/hair/infinity/pigtails_low
+	name = "Pigtails Low"
+	icon_state = "hair_pigtails_low"
+
+/datum/sprite_accessory/hair/infinity/pigtails_twintail_ombre
+	name = "Pigtails Twintail_Ombre"
+	icon_state = "hair_pigtails_twintail_ombre"
+
+/datum/sprite_accessory/hair/infinity/pigtails_twintail_ombre/alt
+	name = "Pigtails Twintail_Ombre Alt"
+	icon_state = "hair_pigtails_twintail_ombre_alt"
+
+/datum/sprite_accessory/hair/infinity/twincurls2
+	name = "Curls Twin"
+	icon_state = "hair_twincurls2"
+
+/datum/sprite_accessory/hair/infinity/travolta
+	name = "Travolta"
+	icon_state = "hair_travolta"
+
+/datum/sprite_accessory/hair/infinity/travolta_tied
+	name = "Travolta Tied"
+	icon_state = "hair_travolta_tied"
+
+/datum/sprite_accessory/hair/infinity/messy_rightcut
+	name = "Messy Right Side Cut"
+	icon_state = "hair_messy_rightcut"
+
+/datum/sprite_accessory/hair/infinity/widowmaker
+	name = "Ponytail Widow"
+	icon_state = "hair_widowmaker"
+
+/datum/sprite_accessory/hair/infinity/widowmaker_alt
+	name = "Ponytail Widow Alt"
+	icon_state = "hair_widowmaker_alt"
+
+/datum/sprite_accessory/hair/infinity/widowmaker_short
+	name = "Ponytail Widow Short"
+	icon_state = "hair_widowmaker_short"
+
+/datum/sprite_accessory/hair/infinity/longwide
+	name = "Long Wide Fringe"
+	icon_state = "hair_longwide"
+
+/datum/sprite_accessory/hair/infinity/mancut
+	name = "Mancut"
+	icon_state = "hair_mancut"
+//[/AURORA]
